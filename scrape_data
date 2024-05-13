@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import openai
 
 # Set up OpenAI API
-openai.api_key = 'YOUR_API_KEY_HERE'  # Replace with your actual API key
+openai.api_key = 'YOUR_API_KEY'  
 
 # Function to generate search query using OpenAI API
 def generate_query():
@@ -20,14 +20,13 @@ def scrape_construction_bids():
     # Generate search query
     query = generate_query()
 
-    # Make request to the construction bid source (hypothetical URL)
     url = f"https://example.com/search?q={query}"
     response = requests.get(url)
     
-    # Parse HTML content using BeautifulSoup
+    # Parsing HTML content using BeautifulSoup
     soup = BeautifulSoup(response.content, 'html.parser')
     
-    # Extract relevant information from the webpage
+    # Extracting relevant information from the webpage
     bids = []
     for bid in soup.find_all('div', class_='construction-bid'):
         project_name = bid.find('h2', class_='project-name').text.strip()
@@ -46,7 +45,7 @@ def main():
     # Scrape data from the construction bid source
     construction_bids = scrape_construction_bids()
     
-    # Standardize the scraped data (hypothetical schema)
+    # Standardizing the scraped data (hypothetical schema)
     standardized_data = []
     for bid in construction_bids:
         standardized_bid = {
